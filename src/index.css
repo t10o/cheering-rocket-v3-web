@@ -1,0 +1,37 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Space+Grotesk:wght@500;700&display=swap");
+@import "tailwindcss";
+
+:root {
+  color-scheme: light;
+  --font-body: "Noto Sans JP", "Hiragino Sans", sans-serif;
+  --font-heading: "Space Grotesk", "Noto Sans JP", sans-serif;
+  background-color: #fffaf2;
+  --cheer-orange: #ff6b35;
+  --cheer-sky: #4cb5f5;
+  --cheer-mint: #2ec4b6;
+  --cheer-ink: #0f172a;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  color: var(--cheer-ink);
+  font-family: var(--font-body);
+  background: radial-gradient(circle at top left, #fff3d6 0%, transparent 40%),
+    radial-gradient(circle at top right, #e7f6ff 0%, transparent 45%),
+    linear-gradient(135deg, #fffaf2 0%, #f8fbff 100%);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: var(--font-heading);
+  letter-spacing: -0.01em;
+}
