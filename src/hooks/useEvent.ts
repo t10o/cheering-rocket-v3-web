@@ -92,7 +92,7 @@ function parseEvent(id: string, data: Record<string, unknown>): Event {
     title: (data.title as string) ?? '',
     description: (data.description as string) ?? '',
     startDateTime: (data.startDateTime as Event['startDateTime']) ?? null,
-    ownerId: '',
+    ownerId: (data.ownerId as string) ?? '',
     ownerName: (data.ownerName as string) ?? '',
     status: ['UPCOMING', 'RUNNING', 'FINISHED'].includes(status) ? status : 'UPCOMING',
     shareToken: id,

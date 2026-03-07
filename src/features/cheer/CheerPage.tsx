@@ -71,6 +71,19 @@ export function CheerPage() {
   const memberList = useMemo(() => {
     const memberMap = new Map<string, { userId: string; displayName: string; photoUrl?: string | null }>()
 
+    if (event?.ownerName) {
+      const ownerRun = runs.find((run) =>
+        event.ownerId ? run.userId === event.ownerId : run.userName === event.ownerName
+      )
+      const ownerUserId = event.ownerId || ownerRun?.userId || `event-owner:${event.id}`
+
+      memberMap.set(ownerUserId, {
+        userId: ownerUserId,
+        displayName: event.ownerName,
+        photoUrl: ownerRun?.userPhotoUrl ?? null,
+      })
+    }
+
     rawMembers.forEach((member) => {
       memberMap.set(member.userId, {
         userId: member.userId,
@@ -113,7 +126,7 @@ export function CheerPage() {
       }),
       colorMap,
     }
-  }, [rawMembers, runs, latestRuns, memberRoutes])
+  }, [event, rawMembers, runs, latestRuns, memberRoutes])
 
   const mapRoutes = useMemo(() => {
     const routes = new Map(memberRoutes)
